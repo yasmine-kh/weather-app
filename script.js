@@ -1,3 +1,15 @@
+function getIcon(condition){
+
+if(condition === "Clear") return "fa-solid fa-sun";
+if(condition === "Clouds") return "fa-solid fa-cloud";
+if(condition === "Rain") return "fa-solid fa-cloud-rain";
+if(condition === "Drizzle") return "fa-solid fa-cloud-rain";
+if(condition === "Thunderstorm") return "fa-solid fa-bolt";
+if(condition === "Snow") return "fa-solid fa-snowflake";
+if(condition === "Mist") return "fa-solid fa-smog";
+
+return "fa-solid fa-sun";
+}
 //current weather
 var xhr=new XMLHttpRequest();
 xhr.open("GET","https://api.openweathermap.org/data/2.5/weather?units=metric&q=Oujda&APPID=a1118bd486a9e7a348bd31f131e2c0d5");
@@ -6,6 +18,10 @@ xhr.onload=function(){
      if (xhr.status === 200) {
     var data=JSON.parse(xhr.response);
     console.log(data);
+//icon
+    var icon = getIcon(data.weather[0].main);
+  document.querySelector("header i").className = icon;
+//header
     document.querySelector("header>div>span:first-child").textContent = parseInt(data.main.temp) + "°C";
    document.querySelector(".weather span:first-child").textContent =
 parseInt(data.main.temp_max) + "°/" +
@@ -69,6 +85,9 @@ let humidity = hourData.main.humidity;
 hours[i].children[0].textContent = time;
 hours[i].children[2].textContent = temp + "°";
 hours[i].children[3].children[1].textContent = humidity + "%";
+//icon
+let condition = hourData.weather[0].main;
+hours[i].children[1].className = getIcon(condition);
 }
 //daily forecast
 var days = document.querySelectorAll("aside > div");
@@ -83,6 +102,11 @@ let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
 let humidity = dayData.main.humidity;
 let temp_max = parseInt(dayData.main.temp_max);
 let temp_min = parseInt(dayData.main.temp_min);
+
+//icon
+let condition = dayData.weather[0].main;
+days[i].children[2].className = getIcon(condition);
+days[i].children[3].className = "fa-solid fa-moon";
 
 days[i].children[0].textContent = dayName;
 days[i].children[1].children[1].textContent = humidity + "%";
