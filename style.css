@@ -89,15 +89,26 @@ aside{
 aside>div{
     display: flex;
     justify-content: space-between;
+    align-items:center;
     padding: 5px 0;
 }
 aside>div> span:first-child {
-    min-width: 80px; 
-   
+    width:90px;
 }
 aside>div>div{
     display: flex;
     gap: 5px;
+    width:70px;  
+    align-items:center;
+}
+aside > div > i{
+    width:40px;
+    text-align:center;
+}
+aside > div > span:nth-last-child(2),
+aside > div > span:last-child{
+    width:40px;
+    text-align:right;
 }
 footer{
     display: flex;
