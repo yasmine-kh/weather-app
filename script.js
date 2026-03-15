@@ -45,7 +45,7 @@ if(xhr2.status === 200){
 
 var data = JSON.parse(xhr2.response);
 console.log(data);
-
+// temp by hour
 var hours = document.querySelectorAll("section > div");
 
 for(let i=0;i<hours.length;i++){
