@@ -33,3 +33,35 @@ xhr.onloadend=function(){
 }
 
 xhr.send();
+
+
+var xhr2 = new XMLHttpRequest();
+
+xhr2.open("GET","https://api.openweathermap.org/data/2.5/forecast?units=metric&q=Oujda&appid=a1118bd486a9e7a348bd31f131e2c0d5");
+
+xhr2.onload=function(){
+
+if(xhr2.status === 200){
+
+var data = JSON.parse(xhr2.response);
+console.log(data);
+
+var hours = document.querySelectorAll("section > div");
+
+for(let i=0;i<hours.length;i++){
+
+let hourData = data.list[i];
+
+let time = hourData.dt_txt.split(" ")[1].slice(0,5);
+let temp = parseInt(hourData.main.temp);
+let humidity = hourData.main.humidity;
+
+hours[i].children[0].textContent = time;
+hours[i].children[2].textContent = temp + "°";
+hours[i].children[3].children[1].textContent = humidity + "%";
+
+}
+}
+}
+
+xhr2.send();
