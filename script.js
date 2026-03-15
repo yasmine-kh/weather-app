@@ -11,6 +11,14 @@ xhr.onload=function(){
 parseInt(data.main.temp_max) + "°/" +
 parseInt(data.main.temp_min) + "° Feels like " +
 parseInt(data.main.feels_like) + "°";
+//current day nd time
+var now = new Date(data.dt * 1000);
+var day = now.toLocaleDateString("en-US",{ weekday:"short" });
+var time =
+now.getHours().toString().padStart(2,'0') + ":" +
+now.getMinutes().toString().padStart(2,'0');
+document.querySelector(".weather span:last-child").textContent =
+day + ", " + time;
 
 //sunrise sunset
 var sunrise = new Date(data.sys.sunrise * 1000);//convert frm unix timestamp to sec
