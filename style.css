@@ -42,7 +42,19 @@ header>div>span:first-child{
 }
 header i{
     font-size: 50px;
+}
+.sun-spin{
     animation: spin 4s linear infinite;
+}
+
+@keyframes cloudMove{
+    0%{ transform: translateX(-5px); }
+    50%{ transform: translateX(5px); }
+    100%{ transform: translateX(-5px); }
+}
+
+.cloud-move{
+    animation: cloudMove 3s ease-in-out infinite;
 }
 .weather{
     display: flex;
