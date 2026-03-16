@@ -1,14 +1,27 @@
 function getIcon(condition){
 
-if(condition === "Clear") return "fa-solid fa-sun";
-if(condition === "Clouds") return "fa-solid fa-cloud";
-if(condition === "Rain") return "fa-solid fa-cloud-rain";
-if(condition === "Drizzle") return "fa-solid fa-cloud-rain";
-if(condition === "Thunderstorm") return "fa-solid fa-bolt";
-if(condition === "Snow") return "fa-solid fa-snowflake";
-if(condition === "Mist") return "fa-solid fa-smog";
+if(condition === "Clear")
+return "fa-solid fa-sun sun-spin";
 
-return "fa-solid fa-sun";
+if(condition === "Clouds")
+return "fa-solid fa-cloud cloud-move";
+
+if(condition === "Rain")
+return "fa-solid fa-cloud-rain cloud-move";
+
+if(condition === "Drizzle")
+return "fa-solid fa-cloud-rain cloud-move";
+
+if(condition === "Thunderstorm")
+return "fa-solid fa-bolt";
+
+if(condition === "Snow")
+return "fa-solid fa-snowflake";
+
+if(condition === "Mist")
+return "fa-solid fa-smog";
+
+return "fa-solid fa-sun sun-spin";
 }
 //current weather
 var xhr=new XMLHttpRequest();
