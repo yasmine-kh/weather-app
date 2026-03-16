@@ -1,27 +1,14 @@
 function getIcon(condition){
 
-if(condition === "Clear")
-return "fa-solid fa-sun sun-spin";
+if(condition === "Clear") return "fa-solid fa-sun";
+if(condition === "Clouds") return "fa-solid fa-cloud";
+if(condition === "Rain") return "fa-solid fa-cloud-rain";
+if(condition === "Drizzle") return "fa-solid fa-cloud-rain";
+if(condition === "Thunderstorm") return "fa-solid fa-bolt";
+if(condition === "Snow") return "fa-solid fa-snowflake";
+if(condition === "Mist") return "fa-solid fa-smog";
 
-if(condition === "Clouds")
-return "fa-solid fa-cloud cloud-move";
-
-if(condition === "Rain")
-return "fa-solid fa-cloud-rain cloud-move";
-
-if(condition === "Drizzle")
-return "fa-solid fa-cloud-rain cloud-move";
-
-if(condition === "Thunderstorm")
-return "fa-solid fa-bolt";
-
-if(condition === "Snow")
-return "fa-solid fa-snowflake";
-
-if(condition === "Mist")
-return "fa-solid fa-smog";
-
-return "fa-solid fa-sun sun-spin";
+return "fa-solid fa-sun";
 }
 //current weather
 var xhr=new XMLHttpRequest();
@@ -32,8 +19,22 @@ xhr.onload=function(){
     var data=JSON.parse(xhr.response);
     console.log(data);
 //icon
-    var icon = getIcon(data.weather[0].main);
-  document.querySelector("header i").className = icon;
+var icon = getIcon(data.weather[0].main);
+document.querySelector("header i").className = icon;
+var condition = data.weather[0].main;
+
+var headerIcon = document.querySelector("header i");
+
+headerIcon.className = getIcon(condition);
+
+headerIcon.classList.remove("sun-spin","cloud-move");
+
+if(condition === "Clear"){
+headerIcon.classList.add("sun-spin");
+}
+else if(condition === "Clouds" || condition === "Rain" || condition === "Drizzle"){
+headerIcon.classList.add("cloud-move");
+}
 //header
     document.querySelector("header>div>span:first-child").textContent = parseInt(data.main.temp) + "°C";
    document.querySelector(".weather span:first-child").textContent =
