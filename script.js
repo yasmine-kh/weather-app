@@ -19,8 +19,6 @@ xhr.onload=function(){
     var data=JSON.parse(xhr.response);
     console.log(data);
 //icon
-var icon = getIcon(data.weather[0].main);
-document.querySelector("header i").className = icon;
 var condition = data.weather[0].main;
 
 var headerIcon = document.querySelector("header i");
