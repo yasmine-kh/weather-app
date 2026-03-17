@@ -7,8 +7,11 @@
 }
 .container{
     background: linear-gradient(to bottom right ,#7da6ed,#337ff1 ) ;
-    width: 98%;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 20px;
 }
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
